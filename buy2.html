@@ -1,0 +1,167 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Éclat Exquis</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: black;
+            color: wheat;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .pagination a {
+            color: wheat;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 0;
+            color: wheat;
+        }
+
+        footer {
+            background-color: rgb(46, 44, 41);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .product img {
+            margin-bottom: 20px;
+        }
+
+        .product button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: black;
+            color: wheat;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .product button:hover {
+            background-color: wheat;
+            color: black;
+        }
+
+        .sizes button {
+            margin: 5px;
+            padding: 5px 10px;
+            font-size: 14px;
+            background-color: black;
+            color: wheat;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .sizes button:hover {
+            background-color: wheat;
+            color: black;
+        }
+
+        .sizes {
+            display: none;
+        }
+
+        .sizes.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="pagination"> 
+        <a href="index.html">HOME</a>
+        <a href="products.html">PRODUCTS</a>
+        <a href="aboutus.html">ABOUT US</a>
+        <a href="contact-us.html">CONTACT US</a>
+        <a href="shopping-cart.html">
+            <img src="cart.png" alt="Shopping Cart" style="width: 60px; height: 60px;">
+            <span id="cart-counter" style="color: rgb(255, 255, 255);"></span>
+        </a>
+        
+    </div>
+</header>
+
+<main>
+    <img id="black-img" src="black.png" height="400" width="400">
+    <h1>BASIC TEE WHITE</h1>
+    <hr>
+</main>
+
+<footer>
+    <div class="product">
+        <img src="basicwhite-removebg-preview (1).png" height="400">
+        <p style="color: rgb(255, 255, 255); font-size: 20px;">Price: €39</p>
+        <button onclick="showSizes()">Add to Cart</button>
+        <div class="sizes" id="sizes">
+            <button onclick="addToCart('basic_tee_white', 'small')">Small</button>
+            <button onclick="addToCart('basic_tee_white', 'medium')">Medium</button>
+            <button onclick="addToCart('basic_tee_white', 'large')">Large</button>
+            <button onclick="addToCart('basic_tee_white', 'xl')">Extra Large</button>
+        </div>
+    </div>
+</footer>
+
+<script>
+    function showSizes() {
+        var sizes = document.getElementById("sizes");
+        sizes.classList.toggle("active");
+    }
+
+    function addToCart(product, size) {
+        // Implement your logic to add the product to cart with selected size
+        alert("Added " + product + " size " + size + " to cart!");
+    }
+</script>
+
+<script>
+    function addToCart(product, size) {
+        var item = { product: product, size: size, price: 39, imageUrl: "basicwhite-removebg-preview (1).png"};
+        var cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push(item);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert("Added " + product + " size " + size + " to cart!");
+    }
+
+function updateCartCounter() {
+    var cart = JSON.parse(localStorage.getItem('cart')) || [];
+    var cartCounter = document.getElementById('cart-counter');
+    if (cartCounter) {
+        cartCounter.innerText = cart.length;
+    }
+}
+</script>
+
+
+
+
+</body>
+</html>

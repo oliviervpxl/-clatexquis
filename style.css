@@ -1,0 +1,54 @@
+#black-img {
+    display: block;
+    margin: 0 auto;
+}
+
+#foot-foot 
+{
+background-image: url(winkel.jpg);
+
+
+}
+
+.pagination{
+    text-align: center;
+}
+.pagination a{
+    color: wheat;
+    text-decoration:black;
+    padding: 5px 5px;
+    display: inline-block;
+    border-radius: 5px;
+
+   
+}
+.pagination a:hover:not(.active)
+{
+    background-color: gray;
+    border-radius: 5px;
+}
+#foot-foot2
+{
+    background-image: url(winkel.jpg);
+
+}
+button {
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 10px;
+    font-style: italic;
+    padding: 10px 20px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+}
+
+button:hover {
+    background-color: rgba(0, 0, 0, 0.1); 
+}
+.SHOP a:hover:not(.active)
+{
+    background-color: gray;
+}
+
+

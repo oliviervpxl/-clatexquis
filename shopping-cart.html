@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Éclat Exquis</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body style="background-color: black;">
+
+<header>
+    <div class="pagination"> 
+        <a style="color: wheat;" href="index.html">HOME</a>
+        <a style="color: wheat;" href="products.html">PRODUCTS</a>
+        <a style="color: wheat;" href="aboutus.html">ABOUT US</a>
+        <a style="color: wheat;" href="contact-us.html">CONTACT US</a>
+        <a href="shopping-cart.html">
+            <img src="cart.png" alt="Shopping Cart" style="width: 60px; height: 60px;">
+        </a>
+    </div>
+</header>
+
+<main>
+    <img id="black-img" src="black.png" height="400" width="400px">
+    <h2 style="color: white;">SHOPPING CART</h2>
+    <script>
+        function displayCart() {
+            var cart = JSON.parse(localStorage.getItem('cart')) || [];
+            var totalPrice = 0;
+            var cartItemsHTML = "";
+
+            cart.forEach(function(item) {
+                totalPrice += item.price;
+                cartItemsHTML += "<div><img src='" + item.imageUrl + "' height='300'>" + 
+                                 "<p>" + item.product + " - " + item.size + " - €" + item.price + "</p></div>";
+            });
+
+            document.getElementById('cart-items').innerHTML = cartItemsHTML;
+            document.getElementById('total-price').innerText = "Total Price: €" + totalPrice;
+        }
+
+        function clearCart() {
+            localStorage.removeItem('cart');
+            alert("Shopping cart cleared!");
+            displayCart(); // Update the displayed cart after clearing
+        }
+
+        function buy() {
+            // Implement your buy logic here
+            alert("Thank you for your purchase!");
+            // You can redirect the user to a confirmation page or do any other necessary actions
+        }
+
+        window.onload = displayCart;
+    </script>
+    <hr>
+
+    <div style="background-color: rgb(255, 255, 255);>
+        <div style="color: white;" id="cart-items"></div>
+        <div style="color: white;font-size: 30px;" id="total-price"></div>
+        <button style="border-color: wheat;" onclick="clearCart()">Clear Shopping Cart</button>
+        <button style="border-color: wheat;" onclick="buy()">BUY NOW</button>
+    </div>
+    <footer style="background-color: wheat;">
+
+<hr>
+    </footer>
+
+
+
+
+</main>
+
+</body>
+</html>
